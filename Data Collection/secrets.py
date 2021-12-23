@@ -1,11 +1,11 @@
-spotify_token = "BQCa4Cdc8Mn2s4QohFC5DbYVXXE2r17oC0HUtsNaXVdql4q4kuiZNBWm33oisFaeg9qpUvENjFIucj503vxZ8L-IliwKTNV2XM1UZragBn6WHwzqCc4aVjFDt-HRg8AXhCd2COoBICweEHY-j_tId1s"
-spotify_user_id = '1193183768'
-refresh_token = "AQBiRYpF9Qtmj48otq8L33oq4AGPt4br5tKkIly2jBR8MCWYQKUwitZfoMgIvv-Hx5d1AD8ewbg93ylX4965EuxQWon56-KouE9b726IIiy9HXh9g9Y7TQUhpQgSfLA6OoA"
-base_64 = "YzM0MTRkZmQwYTBkNGZjOGIxNTMwODBmNTgxZmU2NmY6ZTU5ZjRiOGRjNTZhNGNhZTlmYTY3MjZmMGM4MDBiZTA="
+spotify_token = "E***************************************************************"
+spotify_user_id = '*********************8'
+refresh_token = "*********************"
+base_64 = "*********************
 
 
 
-fitbit_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM0JIWkoiLCJzdWIiOiI5UDhCVkYiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJhY3QgcnNldCBybG9jIHJ3ZWkgcmhyIHJudXQgcnBybyByc2xlIiwiZXhwIjoxNjM4NDY0MDU2LCJpYXQiOjE2MzgzNzc2NTZ9.YVv30uBho8j2U4UcJkm7SL8FPTBmpT2TY-T3FQjPp6c"
-#fitbit_refresh_token = "1508e77c36dfeba8128d5df1660cd87b7282d92e2adc2b77fc41a1b7d7c3c5c7"
-#fitbit_base_64 = "MjNCSFpKOmZmZjlmNzhiN2MxM2I4ZmFkZWUwY2M0NTNlMmNlZDFl"
+fitbit_token = "*********************c"
+#fitbit_refresh_token = "*********************"
+#fitbit_base_64 = *********************"
 
