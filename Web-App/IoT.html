@@ -1,0 +1,852 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    
+    <!--Import Materialize icon-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+
+    
+    <title>Sensing & IoT</title>
+</head>
+
+
+
+
+<body class="container">
+
+    <div class="intro">
+    
+
+        <a href="index.html" class="hide-on-med-and-down">
+            <div class="back-div">
+                <p class="back-home">Back</p>
+                <img class="chevron-back" src="pictures/chevron-back.svg"  alt="">
+            </div>
+       </a>
+ 
+       <div class="title-date row">
+        
+
+         <h2 class="project-title">Sensing & IoT</h2>
+
+         <div class="pulsating-circle"></div>
+       </div>
+
+        <div class="col s12" style="padding-left: 0;">
+
+            <h5 class="para-title">Overview</h5>
+            <p class="para-text" style="text-align: justify;text-justify: inter-word;">
+                Spotify is currently the world’s largest music streaming platform that leverages user data to offer a hyper-personalised service. This year, personalised features included a yearly summary of users’ listening activities called “Spotify Wrapped”. Part of this feature includes a section called “Audio Aura” whereby Spotify used song features to predict user’s listening “moods” which could potentially offer behavioural insights associated with the function(s) of music. These moods were generated with the combination of different Spotify audio features, such as danceability, energy,  acoustics, tempo etc. The aim of this project is to add another layer of biometric data to Spotify’s audio features, but rather than predicting “moods”, I want to establish the mathematical relationship between audio features and heartrate.
+            </p>
+
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <h6 class="para-title" style="margin-bottom: 1.7em;">My most recent listen:</h6>
+
+        <div class="col s6 m4 l3" style="text-align: center;">
+            
+            <img class="album_cover"style="border-radius: 10px;" id="most_recent" alt="">
+        </div>
+
+        <div class="album_cover_text col s6 m4 ">
+
+        <p class="album_text_info para-text" id="artist_recent"></p>
+        <p class="album_text_info para-text"id="track_recent"></p>
+        <p class="album_text_info para-text"id="date_recent"></p>
+        <p class="album_text_info para-text"id="time_recent"></p>
+        <p class="album_text_info para-text"id="heart_recent"></p>
+  
+        </div>
+
+    </div>
+    
+    <div class="row">
+        <h6 class="para-title">My weekly [auto-generated] artist moodboard:</h6>
+        <p class="para-text" style="text-align: justify;text-justify: inter-word;">
+            In addition to the project aim, utilized the technical setup to efficiently generate visual artwork that incorporates my weekly listening activity. I wanted to experiment generating art from personal behavioural activities – this mood board can be seen as a more explicit audio aura.
+        </p>
+        <img style="border-radius: 10px;" id= "weekly_image" width="100%"/>s
+    </div>
+
+
+    <div class="row" >
+        <h6 class="para-title">My live heartrate and audio feature data:</h6>
+        <p class="para-text" style="text-align: justify;text-justify: inter-word;">
+            Shown below a is live data displaying how my heartrate correlates to different Spotify track audio features. I used a supervised machine learning algorithm (multivariate linear regression) to meta model the data and was able to achieve a test accuracy of 38%. This initially seems low in the context of STEM studies, however with regards to social sciences this is considered a very acceptable due the unpredictability of human behaviour – especially music listening which has been described as one of human’s most “enigmatic behaviours”. The charts below are ordered in statistical significance, with instrumentalness being most influential on heartrate, closely followed by danceability and energy.
+        </p>
+        <div class="col s12 m6" style="margin-top: 1.5em;">
+            <div class="music_plots" id="acousticness"></div>
+        </div>
+        
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="energy" ></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="dance" ></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="liveness"></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="valence"></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="speechness"></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="loudness"></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="mode"></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="tempo" ></div>
+        </div>
+
+        <div class="col s12 m6" style="margin-top: 1.5em;" >
+            <div class="music_plots" id="instrumentalness" ></div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6">
+            <div id="tempo"></div>
+        </div>
+
+        <div class="col s12 m6" >
+            <div id="testerrr" style="width: 100%;max-height: 250PX;"></div>
+        </div>
+    </div>
+    
+    
+
+
+
+
+    <script type="module">
+        
+        
+
+        import { initializeApp} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getDatabase, ref, onValue, child, get } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+        import { getStorage, ref as ref1, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCWO48_gM16IgYULLWMdjFz0-QNEALx0TY",
+            authDomain: "portfolio-eadae.firebaseapp.com",
+            databaseURL: "https://portfolio-eadae.firebaseio.com",
+            projectId: "portfolio-eadae",
+            storageBucket: "portfolio-eadae.appspot.com",
+            messagingSenderId: "191242670825",
+            appId: "1:191242670825:web:c9fed1f21b47f8d665d678",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        // Get a reference to the database service
+        const database = getDatabase(app);
+        const storage = getStorage(app);
+
+
+
+        
+
+        var dbRef = ref(database);
+
+        //IMAGES
+
+        const weekly_image_ref = ref1(storage, 'weekly_art.jpg');
+
+        const most_recent_ref = ref1(storage, 'most_recent.jpg');
+
+        getDownloadURL(weekly_image_ref).then((url) => {
+
+            var weekly_url = url;
+            const img = document.getElementById('weekly_image');
+            img.setAttribute('src', weekly_url);
+
+        });
+
+        getDownloadURL(most_recent_ref).then((url) => {
+
+            var most_recent_url = url;
+            const img = document.getElementById('most_recent');
+            img.setAttribute('src', most_recent_url);
+
+        });
+
+        //IMAGES END
+
+
+
+
+
+        var tempo_data = [];
+        var heartrate_data = [];
+
+
+        get(child(dbRef, '1l6W9eygS7nl1qpjQ_oMwhVUjOPNFpq4bJjBbvektnYk/dataset')).then((snapshot) => {
+            if (snapshot.exists()) {
+
+
+                var response = JSON.stringify(snapshot);
+
+                // Storing data:
+                localStorage.setItem("testJSON", response);
+
+
+                //PASTEZONE
+                var text = localStorage.getItem("testJSON");
+                var obj = JSON.parse(text);
+
+                //GET MOST RECENT LISTEN
+                var count = Object.keys(obj).length;
+
+                var last_item = obj[count];
+
+                var artist_recent = last_item['artist']
+                var track_recent = last_item['track_name']
+                var time_recent = last_item['time']
+                var date_recent = last_item['date']
+                var heart_recent = last_item['heartrate']
+        
+                document.getElementById('artist_recent').innerHTML = "<b>Artist:</b> "+ artist_recent
+                document.getElementById('track_recent').innerHTML = "<b>Track:</b> " + track_recent
+                document.getElementById('date_recent').innerHTML = "<b>Date:</b> "+ date_recent 
+                document.getElementById('time_recent').innerHTML = "<b>Time:</b> "+ time_recent
+                document.getElementById('heart_recent').innerHTML = "<b>Heartrate:</b> "+ heart_recent
+
+                //INPUT arrays in order of effect on heartraate
+                var acousticness_array = [];
+                var energy_array = [];
+                var danceability_array = [];
+                var liveness_array = [];
+                var valence_array = [];
+                var speechness_array = [];
+                var loudness_array = [];
+                var mode_array = [];
+                var tempo_array = [];
+                var instrumentalness_array = [];
+                var key_array = [];
+
+                //OUTPUT HeartRate array
+                var heart_array = [];
+
+
+                for (let x in obj) {
+
+                    //INPUTS
+                    var acousticness = obj[x]["acousticness"];
+                    var energy = obj[x]["energy"];
+                    var danceability = obj[x]["danceability"];
+                    var liveness = obj[x]["liveness"];
+                    var valence = obj[x]["valence"];
+                    var speechiness = obj[x]["speechiness"];
+                    var loudness = obj[x]["loudness"];
+                    var mode = obj[x]["mode"];
+                    var tempo = obj[x]["tempo"];
+                    var instrumentalness = obj[x]["instrumentalness"];
+                    //console.log(instrumentalness)
+                    var key = obj[x]["key"];
+
+                    //OUTPUT
+                    var heartrate = obj[x]["heartrate"];
+
+                    //PUSH ALL 
+                    acousticness_array.push(acousticness);
+                    energy_array.push(energy);
+                    danceability_array.push(danceability);
+                    liveness_array.push(liveness);
+                    valence_array.push(valence);
+                    speechness_array.push(speechiness);
+                    loudness_array.push(loudness);
+                    mode_array.push(mode);
+                    tempo_array.push(tempo);
+                    instrumentalness_array.push(instrumentalness);
+                    
+
+
+                    heart_array.push(heartrate);
+                }
+
+
+                //// ----------------------CONFIGURE PLOTS SECTION BELOW---------------------- \\\\\\
+
+                    
+                var acousticness_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: acousticness_array,
+                    y: heart_array,
+
+                }];
+
+                const acousticness_style = {
+                    title: {
+                        text: "ACOUSTICNESS",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+
+
+                    showlegend: false,
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'ACOUSTICNESS',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var energy_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: energy_array,
+                    y: heart_array,
+
+                }];
+
+                const energy_style = {
+                    title: {
+                        text: "ENERGY",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'ENERGY',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var danceability_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: danceability_array,
+                    y: heart_array,
+
+                }];
+
+                const danceability_style = {
+                    title: {
+                        text: "DANCEABILITY",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'DANCEABILITY',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var liveness_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: liveness_array,
+                    y: heart_array,
+
+                }];
+
+                const liveness_style = {
+                    title: {
+                        text: "LIVENESS",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'LIVENESS',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var valence_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: valence_array,
+                    y: heart_array,
+
+                }];
+
+                const valence_style = {
+                    title: {
+                        text: "VALENCE",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'VALENCE',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var speechness_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: speechness_array,
+                    y: heart_array,
+
+                }];
+
+                const speechness_style = {
+                    title: {
+                        text: "SPEECHNESS",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'SPEECHNESS',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var loudness_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: loudness_array,
+                    y: heart_array,
+
+                }];
+
+                const loudness_style = {
+                    title: {
+                        text: "LOUDNESS",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'LOUDNESS',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var mode_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: mode_array,
+                    y: heart_array,
+
+                }];
+
+                const mode_style = {
+                    title: {
+                        text: "MODE",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'MODE',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var tempo_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: tempo_array,
+                    y: heart_array,
+
+                }];
+
+                const tempo_style = {
+                    title: {
+                        text: "TEMPO",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: 'TEMPO (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+                var instrumentalness_data = [{
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker:{
+                        color: '#65D46E',
+                        size: 3,
+                        },
+                    x: instrumentalness_array,
+                    y: heart_array,
+
+                }];
+
+                const instrumentalness_style = {
+                    title: {
+                        text: "INSTRUMENTALNESS",
+                        font:{
+                            color: '#FAFAFAFA',
+                            family: 'Courier New, monospace',
+                            size: 17,
+                            
+                            
+                        }
+                    },
+
+                    yaxis:{
+                        title: {
+                            text: 'HEARTRATE (BPM)',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    xaxis:{
+                        title: {
+                            text: "INSTRUMENTALNESS",
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 13,
+                                color: '#FAFAFAFA'
+                            },
+                        },
+                    },
+
+                    plot_bgcolor: "#181414",
+                    paper_bgcolor: "#181414",
+                };
+
+
+                const acousticness_element = document.getElementById('acousticness');
+                const energy_element = document.getElementById('energy');
+                const dance_element = document.getElementById('dance');
+                const liveness_element = document.getElementById('liveness');
+                const valence_element = document.getElementById('valence');
+                const speechness_element = document.getElementById('speechness');
+                const loudness_element = document.getElementById('loudness');
+                const mode_element = document.getElementById('mode');
+                const tempo_element = document.getElementById('tempo');
+                const instrumentalness_element = document.getElementById('instrumentalness');
+                const config = {staticPlot: true, responsive:true};
+
+                //Plotly.newPlot(tempo_element, tempo_data, tempo_style, config);
+                Plotly.newPlot(acousticness_element, acousticness_data, acousticness_style, config);
+                Plotly.newPlot(energy_element, energy_data, energy_style, config);
+                Plotly.newPlot(dance_element, danceability_data, danceability_style, config);
+                Plotly.newPlot(liveness_element, liveness_data, liveness_style, config);
+                Plotly.newPlot(valence_element, valence_data, valence_style, config);
+                Plotly.newPlot(speechness_element, speechness_data, speechness_style, config);
+                Plotly.newPlot(loudness_element, loudness_data, loudness_style, config);
+                Plotly.newPlot(mode_element, mode_data, mode_style, config);
+                Plotly.newPlot(tempo_element, tempo_data, tempo_style, config);
+                Plotly.newPlot(instrumentalness_element, instrumentalness_data, instrumentalness_style, config);
+
+
+
+                } 
+            
+            else {
+                console.log("No data available");
+                alert("ERROR > Refresh Page")
+            }
+            }).catch((error) => {
+            alert(error);
+            
+                });
+        
+        
+
+    </script>
+
+
+</body>
+</html>
